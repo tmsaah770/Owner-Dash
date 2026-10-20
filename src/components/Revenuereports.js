@@ -127,40 +127,40 @@ export default function Revenuereports({ onNavigate }) {
 
   /* ---------------- Load Revenue ---------------- */
 
-  const loadRevenue = async () => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const response = await reportsApi.getRevenue({
-        period,
-      });
-
-      console.log("Revenue API response:", response);
-
-      const data = getRevenueData(response);
-
-      setRevenueData(data);
-    } catch (err) {
-      console.error("Revenue API error:", err);
-
-      const message =
-        err?.response?.data?.message ||
-        err?.response?.data ||
-        err?.message ||
-        "Failed to load revenue reports.";
-
-      setError(
-        typeof message === "string"
-          ? message
-          : "Failed to load revenue reports."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const loadRevenue = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await reportsApi.getRevenue({
+          period,
+        });
+
+        console.log("Revenue API response:", response);
+
+        const data = getRevenueData(response);
+
+        setRevenueData(data);
+      } catch (err) {
+        console.error("Revenue API error:", err);
+
+        const message =
+          err?.response?.data?.message ||
+          err?.response?.data ||
+          err?.message ||
+          "Failed to load revenue reports.";
+
+        setError(
+          typeof message === "string"
+            ? message
+            : "Failed to load revenue reports."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadRevenue();
   }, [period]);
 

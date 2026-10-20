@@ -20,7 +20,6 @@ import RevenueReports from "./components/Revenuereports";
 import Notifications from "./components/Notifications";
 import Settings from "./components/Settings";
 import ComingSoon from "./components/ComingSoon";
-import dashboardApi from "./api/Dashboardapi";
 
 import { NAV_ITEMS } from "./components/Sidebar";
 
